@@ -18,7 +18,7 @@ namespace PhoneBookReadService.Service
         }
         public void DeletePhoneBook(int id)
         {
-            var phoneBook = repo.Get(string.Format("select * from phonebook where phonebookid = {0}", id));
+            var phoneBook = repo.Get(string.Format("select * from phonebook where id = {0}", id));
             if (phoneBook != null)
             {
                 repo.Delete(phoneBook);
@@ -34,7 +34,7 @@ namespace PhoneBookReadService.Service
             }
             else
             {
-                var result = repo.GetAll(string.Format(@"select * from phonebookview where name='{0}'", name));
+                var result = repo.GetAll(string.Format(@"select * from phonebookview where username = '{0}'", name));
                 return result.Select(x => x.ToDTO()).ToList();
             }
         }

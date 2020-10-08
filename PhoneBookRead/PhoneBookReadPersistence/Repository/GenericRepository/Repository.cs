@@ -20,7 +20,7 @@ namespace PhoneBookReadPersistence.Repository.GenericRepository
         {
             nodes = config.GetSection("cassandraNodes").Value.Split(',');
             var clusters = Cluster.Builder().AddContactPoints(nodes).Build();
-            session = cluster.Connect();
+            session = clusters.Connect();
             mapper = new Mapper(session);
             cluster = clusters;
             GetOrCreateKeySpace();
@@ -41,9 +41,9 @@ namespace PhoneBookReadPersistence.Repository.GenericRepository
                 { "class", "SimpleStrategy" },
                 { "replication_factor", "1" }
             };
-            session.CreateKeyspaceIfNotExists("phonebook", replication, true);
+            session.CreateKeyspaceIfNotExists("phonebookread", replication, true);
 
-            session.ChangeKeyspace("phonebook");
+            session.ChangeKeyspace("phonebookread");
         }
 
         public T Get(string cql, params object[] args)

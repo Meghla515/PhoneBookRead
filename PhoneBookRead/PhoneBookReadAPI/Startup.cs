@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PhoneBookReadPersistence.Repository.PhoneBookReadRepository;
+using PhoneBookReadService.Service;
 
 namespace PhoneBookReadAPI
 {
@@ -25,6 +27,9 @@ namespace PhoneBookReadAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPhoneBookReadRepository, PhoneBookReadRepository>();          
+            services.AddTransient<IPbReadService, PbReadService>();
+
             services.AddControllers();
 
             services.AddSwaggerGen();
