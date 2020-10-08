@@ -13,13 +13,11 @@ namespace PhoneBookReadPersistence.Repository.GenericRepository
         private ISession session { get; set; }
         private IMapper mapper { get; set; }
         private Cluster cluster { get; set; }
-        string[] nodes;
 
 
         public Repository(IConfiguration config)
         {
-            nodes = config.GetSection("cassandraNodes").Value.Split(',');
-            var clusters = Cluster.Builder().AddContactPoints(nodes).Build();
+            var clusters = Cluster.Builder().AddContactPoints("127.0.0.1").Build();
             session = clusters.Connect();
             mapper = new Mapper(session);
             cluster = clusters;

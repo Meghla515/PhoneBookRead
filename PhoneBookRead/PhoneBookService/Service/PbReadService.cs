@@ -34,7 +34,7 @@ namespace PhoneBookReadService.Service
             }
             else
             {
-                var result = repo.GetAll(string.Format(@"select * from phonebookview where username = '{0}'", name));
+                var result = repo.GetAll(string.Format(@"select * from phonebook where username = '{0}'", name));
                 return result.Select(x => x.ToDTO()).ToList();
             }
         }

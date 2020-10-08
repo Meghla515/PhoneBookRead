@@ -9,9 +9,9 @@ namespace PhoneBookReadPersistence.Model
     public class PhoneBook
     {
         [PartitionKey]
-        public int id { get; set; }
-        [Column("username")]
         public string username { get; set; }
+        [Column("id")]
+        public int id { get; set; }
         [Column("phonenumber")]
         public string phonenumber { get; set; }
     }
