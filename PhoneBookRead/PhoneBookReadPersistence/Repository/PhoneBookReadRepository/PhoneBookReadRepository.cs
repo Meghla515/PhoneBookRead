@@ -9,7 +9,7 @@ namespace PhoneBookReadPersistence.Repository.PhoneBookReadRepository
 {
     public class PhoneBookReadRepository : Repository<PhoneBook>, IPhoneBookReadRepository
     {
-        public PhoneBookReadRepository(IConfiguration config) : base(config)
+        public PhoneBookReadRepository()
         {
             CreateTableIfNotExist();
         }

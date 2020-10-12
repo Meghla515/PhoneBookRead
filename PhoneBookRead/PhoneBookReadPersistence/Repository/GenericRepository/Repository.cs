@@ -15,7 +15,7 @@ namespace PhoneBookReadPersistence.Repository.GenericRepository
         private Cluster cluster { get; set; }
 
 
-        public Repository(IConfiguration config)
+        public Repository()
         {
             var clusters = Cluster.Builder().AddContactPoints("127.0.0.1").Build();
             session = clusters.Connect();
